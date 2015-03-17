@@ -7,7 +7,7 @@
     <script src="https://cdn.firebase.com/libs/angularfire/0.8.0/angularfire.min.js"></script>
 
     
-<!-- Angular-char data -->
+<!-- Anagular-char data -->
  <link rel="stylesheet" href=
   "https://cdn.rawgit.com/jtblin/angular-chart.js/master/dist/angular-chart.css" type=
   "text/css" />
@@ -54,13 +54,13 @@
         <td>{{v}}</td>
         <td>
         <button class="btn btn-success" ng-click="incrementCounter(k)">
-            <span class="glyphicon"></span> Increment
+            <span class="glyphicon"></span> Increment
         </button>
         <button class="btn btn-success" ng-click="addCounter(k)">
-            <span class="glyphicon"></span> Reset
+            <span class="glyphicon"></span> Reset
         </button>
         <button class="btn btn-success" ng-click="deleteCounter(k)">
-            <span class="glyphicon"></span> Delete
+            <span class="glyphicon"></span> Delete
         </button>
             </td>
       </tr>
@@ -73,7 +73,7 @@
   <input type="input" ng-model="duration" ng-init="duration=60000"> milliseconds.
     <br>
   <button class="btn btn-success" ng-click="updateCurrentTime()">
-    <span class="glyphicon"></span> Update Server Time
+    <span class="glyphicon"></span> Update Server Time
   </button>
   Refreshed at: {{server.currentTime}}
         
@@ -89,10 +89,10 @@
         seconds
         
         <button class="btn btn-success" ng-click="resetTimer(k)">
-            <span class="glyphicon"></span> Reset
+            <span class="glyphicon"></span> Reset
         </button>
         <button class="btn btn-success" ng-click="deleteTimer(k)">
-            <span class="glyphicon"></span> Delete
+            <span class="glyphicon"></span> Delete
         </button>
     </li>
   </ul>
@@ -108,7 +108,7 @@
     <input ng-model="intervalCounter.target" type="text">.
 
     <button class="btn btn-success" ng-click="updateUntilCounter()">
-        <span class="glyphicon"></span> Start Updates
+        <span class="glyphicon"></span> Start Updates
     </button><br>
 
 
@@ -121,7 +121,7 @@
      <input ng-model="intervalCounter.timer" type="text"> 
     expires.
     <button class="btn btn-success" ng-click="updateCounterUntilTimerExpires()">
-        <span class="glyphicon"></span> Start Updates
+        <span class="glyphicon"></span> Start Updates
     </button><br>
 
 </div>
@@ -137,7 +137,7 @@
             <span ng-show="interval.timer"> timer <b>{{interval["timer"]}}</b> expires. </span>
             <span ng-show="interval.maxCount"> counter reaches <b>{{interval["maxCount"]}}</b>.</span>
             <button class="btn btn-success" ng-click="stopInterval(k)">
-                <span class="glyphicon"></span> Stop Interval
+                <span class="glyphicon"></span> Stop Interval
             </button>
         </li>    
     </ol>
@@ -149,7 +149,7 @@
         to update counter <input ng-model="theCounter" ng-init="theCounter='fun'" type="text">. <br>
         
     <button class="btn btn-success" ng-click="addTask(taskQueue,theCounter)">
-            <span class="glyphicon"></span> Add task
+            <span class="glyphicon"></span> Add task
     </button>
     
         
@@ -162,15 +162,15 @@
             <li ng-repeat="(taskID, task) in v">
                 Task: {{task.task}}, data: {{task.data}}
                 <button class="btn btn-success" ng-click="processTask(k,taskID)">
-                    <span class="glyphicon"></span> Process Task
+                    <span class="glyphicon"></span> Process Task
                 </button>
             </li>
         </ol>
         <button class="btn btn-success" ng-click="addTask(k,theCounter)">
-            <span class="glyphicon"></span> Add task
+            <span class="glyphicon"></span> Add task
         </button>
         <button class="btn btn-success" ng-click="deleteQueue(k)">
-            <span class="glyphicon"></span> Delete
+            <span class="glyphicon"></span> Delete
         </button>
     </li>
   </ul>
@@ -193,7 +193,7 @@
     <input ng-model="intervalCounter.target" type="text">.
 
     <button class="btn btn-success" ng-click="processTasksUntilCounter(intervalCounter.counter,intervalCounter.target,intervalCounter.queue,intervalCounter.interval)">
-        <span class="glyphicon"></span> Start Processing Tasks in Queue 
+        <span class="glyphicon"></span> Start Processing Tasks in Queue 
     </button><br>
 
 </div>
@@ -203,7 +203,7 @@
 <hr>
            
 <button class="btn btn-success" ng-click="update_the_chart()">
-        <span class="glyphicon"></span> Update Chart
+        <span class="glyphicon"></span> Update Chart
 </button><br>
       
     <div class="panel panel-default">
@@ -250,6 +250,7 @@
     $scope.timerCount = 0;
     $scope.localIntervals = {};
         
+
     //Start a maxCount interval and add it to the interval tracking list. 
     $scope.updateUntilCounter = function() {
         
@@ -394,6 +395,7 @@
     
         //If the maxCount has been reached, stop the interval
     function myProcessingTimer(counterName, maxCounter, queueName,intervalToStop) {
+
         
       if($scope.counters[counterName]<maxCounter){
         console.log("Todo: Processing task in queue"+queueName+" while counter "+counterName);
@@ -418,6 +420,7 @@
         
     };
       
+
     // angular-charts starter data shown before first click. 
     //$scope.labels = ["Click", "to", "Update","Counters", "!"];
     //$scope.series = ['Counters', 'Queue Lengths'];
@@ -450,24 +453,30 @@
     $scope.counters.$loaded().then(function() {
         $scope.update_the_chart();
      });
+
     var unwatch_counters = $scope.counters.$watch(function() {
         console.log("counter data changed!");
         $scope.update_the_chart();
+
     });
     //unwatch_counters();
+
+
    }]); //close the controller and module. 
+
   </script>
   
   
   <!-- Google Tracking code. Change the UA-XXXXXXX key to be yours -->
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
     
-    ga('create', 'UA-60832367-1', 'auto');
-    angular.module('myApp', ['angulartics', 'angulartics.google.analytics'])
-  </script>
+      ga('create', 'UA-60832367-1', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
 </body>
 </html>
